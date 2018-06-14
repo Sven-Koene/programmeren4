@@ -1,0 +1,75 @@
+body {
+    font-family: "Menlo", Arial, Helvetica, sans-serif;
+    color:white;
+    overflow:hidden;
+    margin:0px; padding:0px;
+    background-color:#333;
+    font-family: 'Press Start 2P', cursive;
+}
+
+game {
+    width:100vw; height:100vh;
+    background-color:black;
+    overflow:hidden;
+}
+
+game * {
+    position: absolute;
+    display: block;
+    margin:0px; padding:0px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+
+
+textfield {
+    font-size: 1.4em;
+    width:530px;
+    text-shadow: 0px 4px 0px rgba(0,0,0,0.5);
+    transform: translate(20px, 20px);
+    cursor:pointer;
+}
+
+
+cloud {
+    background-image: url(../images/cloud.png);
+    width:277px; height: 109px;
+    animation: movecloud 8s linear infinite;
+}
+
+@keyframes movecloud {
+    from {
+        transform:translate(-30vw, 50px);
+    }
+    to {
+        transform:translate(100vw, 50px);   
+    }
+}
+
+background {
+    width:100%; height:100%;
+    background-color: #E69C5F;
+    /* background-image:url(../images/background.png); */
+    background-repeat: repeat-x;
+    background-position: bottom;
+
+}
+
+coin{
+    background-image: url(../images/end_coin.png);
+    width:77px; height:77px;
+}
+character{
+    background-image: url(../images/character.png);
+    width:66px; height:129px;
+}
+
+wall{
+    background-image: url(../images/muur.png);
+    width:110px; height:2000px;
+}
+
+platform{
+    background-image: url(../images/platform.png);
+    width:351px; height:51px;
+}
