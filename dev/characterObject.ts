@@ -102,7 +102,7 @@ class CharacterObject
         if (newX > 90 && newX + 66 < window.innerWidth / 2 - 50) this.x = newX
         if (newX > window.innerWidth / 2 + 45 && newX + 66 < window.innerWidth - 95) this.x = newX
         
-        if (newY > 50 && newY + 129 < window.innerHeight  - 50) this.y = newY
+        if (newY > 0 && newY + 129 < window.innerHeight) this.y = newY
        
         this.element.style.transform = `translate(${this.x}px, ${this.y}px)`
     
