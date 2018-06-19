@@ -111,7 +111,7 @@ var Coin = (function () {
         this.element = document.createElement("coin");
         var foreground = document.getElementsByTagName("foreground")[0];
         foreground.appendChild(this.element);
-        this.speed = Math.floor(Math.random() * 7) + 3;
+        this.speed = Math.floor(Math.random() * 5) + 3;
         this.x = Math.random() * (window.innerWidth - 77);
         this.y = -77 - (Math.random() * 450);
     }
@@ -130,7 +130,7 @@ var Coin = (function () {
 }());
 var enemyObject = (function () {
     function enemyObject() {
-        this.speed = Math.floor(Math.random() * 10) + 5;
+        this.speed = Math.floor(Math.random() * 5) + 4;
         this.element = document.createElement("enemy");
         var foreground = document.getElementsByTagName("foreground")[0];
         foreground.appendChild(this.element);

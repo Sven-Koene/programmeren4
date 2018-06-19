@@ -3,8 +3,8 @@
 class Enemy2 extends enemyObject
 {
 
-    public x:number
-    public y:number
+    private x:number
+    private y:number
 
     constructor ()
     {
