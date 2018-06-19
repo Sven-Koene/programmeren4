@@ -16,8 +16,6 @@ class CharacterObject
     public speed: number = 10
     public lives:number = 5
 
-    //public fallSpeed:number = 10
-
     constructor()
     {
         this.element = document.createElement("character")
@@ -72,30 +70,9 @@ class CharacterObject
                 break
         }
     }
-    // private jump(){
-    //     this.y -= 75
-    //     requestAnimationFrame(()=>this.jump2())
-        
-    // }
-    // private jump2(){
-    //     this.y -= 75
-    //     requestAnimationFrame(()=>this.jump3())
-        
-    // }
-    // private jump3(){
-    //     this.y -= 75
-    //     requestAnimationFrame(()=>this.jump4())
-        
-    // }
-    // private jump4(){
-    //     this.y -= 75       
-    // }
-
+    
     public update() {
-        // if(this.y < innerHeight - 150){
-        // this.y += this.fallSpeed
-        // }
-
+  
         let newX = this.x - this.leftSpeed + this.rightSpeed
         let newY = this.y - this.upSpeed + this.downSpeed
         
