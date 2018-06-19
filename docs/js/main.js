@@ -1,96 +1,36 @@
 "use strict";
-var Character = (function () {
-    function Character() {
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var CharacterObject = (function () {
+    function CharacterObject() {
         var _this = this;
         this.leftSpeed = 0;
         this.rightSpeed = 0;
+        this.upSpeed = 0;
+        this.downSpeed = 0;
         this.speed = 10;
-        this.fallSpeed = 10;
-        this.element = document.createElement("character");
-        var foreground = document.getElementsByTagName("foreground")[0];
-        foreground.appendChild(this.element);
-        this.leftKey = 65;
-        this.rightKey = 68;
-        this.WKey = 87;
-        this.x = 750;
-        this.y = innerHeight - 200;
-        window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
-        window.addEventListener("keyup", function (e) { return _this.onKeyUp(e); });
-    }
-    Character.prototype.onKeyDown = function (e) {
-        switch (e.keyCode) {
-            case this.leftKey:
-                this.leftSpeed = this.speed;
-                break;
-            case this.rightKey:
-                this.rightSpeed = this.speed;
-                break;
-            case this.WKey:
-                this.jump();
-                break;
-        }
-    };
-    Character.prototype.onKeyUp = function (e) {
-        switch (e.keyCode) {
-            case this.leftKey:
-                this.leftSpeed = 0;
-                break;
-            case this.rightKey:
-                this.rightSpeed = 0;
-                break;
-        }
-    };
-    Character.prototype.jump = function () {
-        var _this = this;
-        this.y -= 75;
-        requestAnimationFrame(function () { return _this.jump2(); });
-    };
-    Character.prototype.jump2 = function () {
-        var _this = this;
-        this.y -= 75;
-        requestAnimationFrame(function () { return _this.jump3(); });
-    };
-    Character.prototype.jump3 = function () {
-        var _this = this;
-        this.y -= 75;
-        requestAnimationFrame(function () { return _this.jump4(); });
-    };
-    Character.prototype.jump4 = function () {
-        this.y -= 75;
-    };
-    Character.prototype.update = function () {
-        if (this.y < innerHeight - 150) {
-            this.y += this.fallSpeed;
-        }
-        var newX = this.x - this.leftSpeed + this.rightSpeed;
-        if (newX > 100 && newX + 66 < window.innerWidth / 2 - 50)
-            this.x = newX;
-        this.element.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
-    };
-    Character.prototype.getRectangle = function () {
-        return this.element.getBoundingClientRect();
-    };
-    return Character;
-}());
-var Character2 = (function () {
-    function Character2() {
-        var _this = this;
-        this.leftSpeed = 0;
-        this.rightSpeed = 0;
-        this.speed = 10;
-        this.fallSpeed = 10;
+        this.lives = 5;
         this.element = document.createElement("character");
         var foreground = document.getElementsByTagName("foreground")[0];
         foreground.appendChild(this.element);
         this.leftKey = 37;
         this.rightKey = 39;
-        this.WKey = 38;
-        this.x = 1650;
+        this.upKey = 38;
+        this.downKey = 40;
+        this.x = innerWidth - 100;
         this.y = innerHeight - 200;
         window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
         window.addEventListener("keyup", function (e) { return _this.onKeyUp(e); });
     }
-    Character2.prototype.onKeyDown = function (e) {
+    CharacterObject.prototype.onKeyDown = function (e) {
         switch (e.keyCode) {
             case this.leftKey:
                 this.leftSpeed = this.speed;
@@ -98,12 +38,15 @@ var Character2 = (function () {
             case this.rightKey:
                 this.rightSpeed = this.speed;
                 break;
-            case this.WKey:
-                this.jump();
+            case this.upKey:
+                this.upSpeed = this.speed;
+                break;
+            case this.downKey:
+                this.downSpeed = this.speed;
                 break;
         }
     };
-    Character2.prototype.onKeyUp = function (e) {
+    CharacterObject.prototype.onKeyUp = function (e) {
         switch (e.keyCode) {
             case this.leftKey:
                 this.leftSpeed = 0;
@@ -111,58 +54,128 @@ var Character2 = (function () {
             case this.rightKey:
                 this.rightSpeed = 0;
                 break;
+            case this.upKey:
+                this.upSpeed = 0;
+                break;
+            case this.downKey:
+                this.downSpeed = 0;
+                break;
         }
     };
-    Character2.prototype.jump = function () {
-        var _this = this;
-        this.y -= 75;
-        requestAnimationFrame(function () { return _this.jump2(); });
-    };
-    Character2.prototype.jump2 = function () {
-        var _this = this;
-        this.y -= 75;
-        requestAnimationFrame(function () { return _this.jump3(); });
-    };
-    Character2.prototype.jump3 = function () {
-        var _this = this;
-        this.y -= 75;
-        requestAnimationFrame(function () { return _this.jump4(); });
-    };
-    Character2.prototype.jump4 = function () {
-        this.y -= 75;
-    };
-    Character2.prototype.update = function () {
-        if (this.y < innerHeight - 150) {
-            this.y += this.fallSpeed;
-        }
+    CharacterObject.prototype.update = function () {
         var newX = this.x - this.leftSpeed + this.rightSpeed;
-        if (newX > 100 && newX + 66 < window.innerWidth / 2 - 50)
+        var newY = this.y - this.upSpeed + this.downSpeed;
+        if (newX > 90 && newX + 66 < window.innerWidth / 2 - 50)
             this.x = newX;
-        if (newX > window.innerWidth / 2 + 50 && newX + 66 < window.innerWidth - 100)
+        if (newX > window.innerWidth / 2 + 45 && newX + 66 < window.innerWidth - 95)
             this.x = newX;
+        if (newY > 50 && newY + 129 < window.innerHeight - 50)
+            this.y = newY;
         this.element.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
-    Character2.prototype.getRectangle = function () {
+    CharacterObject.prototype.getRectangle = function () {
         return this.element.getBoundingClientRect();
     };
-    return Character2;
+    return CharacterObject;
 }());
+var Character = (function (_super) {
+    __extends(Character, _super);
+    function Character() {
+        var _this = _super.call(this) || this;
+        _this.leftKey = 65;
+        _this.rightKey = 68;
+        _this.upKey = 87;
+        _this.downKey = 83;
+        _this.x = 100;
+        _this.y = innerHeight - 200;
+        return _this;
+    }
+    return Character;
+}(CharacterObject));
+var Character2 = (function (_super) {
+    __extends(Character2, _super);
+    function Character2() {
+        var _this = _super.call(this) || this;
+        _this.leftKey = 37;
+        _this.rightKey = 39;
+        _this.upKey = 38;
+        _this.downKey = 40;
+        _this.x = innerWidth - 166;
+        _this.y = innerHeight - 200;
+        return _this;
+    }
+    return Character2;
+}(CharacterObject));
 var Coin = (function () {
     function Coin() {
         this.element = document.createElement("coin");
         var foreground = document.getElementsByTagName("foreground")[0];
         foreground.appendChild(this.element);
-        this.x = 500;
-        this.y = 100;
+        this.speed = Math.floor(Math.random() * 7) + 3;
+        this.x = Math.random() * (window.innerWidth - 77);
+        this.y = -77 - (Math.random() * 450);
     }
     Coin.prototype.update = function () {
+        this.y += this.speed;
         this.element.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
     Coin.prototype.getRectangle = function () {
         return this.element.getBoundingClientRect();
     };
+    Coin.prototype.reset = function () {
+        this.x = Math.random() * (window.innerWidth - 200);
+        this.y = -400 - (Math.random() * 450);
+    };
     return Coin;
 }());
+var enemyObject = (function () {
+    function enemyObject() {
+        this.speed = Math.floor(Math.random() * 10) + 5;
+        this.element = document.createElement("enemy");
+        var foreground = document.getElementsByTagName("foreground")[0];
+        foreground.appendChild(this.element);
+    }
+    enemyObject.prototype.getRectangle = function () {
+        return this.element.getBoundingClientRect();
+    };
+    return enemyObject;
+}());
+var Enemy = (function (_super) {
+    __extends(Enemy, _super);
+    function Enemy() {
+        var _this = _super.call(this) || this;
+        _this.y = Math.random() * (window.innerHeight - 77);
+        _this.x = -77 - (Math.random() * 450);
+        return _this;
+    }
+    Enemy.prototype.update = function () {
+        this.x += this.speed;
+        this.element.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
+    };
+    Enemy.prototype.reset = function () {
+        this.y = Math.random() * (window.innerHeight - 200);
+        this.x = -77 - (Math.random() * 450);
+    };
+    return Enemy;
+}(enemyObject));
+var Enemy2 = (function (_super) {
+    __extends(Enemy2, _super);
+    function Enemy2() {
+        var _this = _super.call(this) || this;
+        _this.y = Math.random() * (window.innerHeight - 77);
+        _this.x = (window.innerWidth + 77) + (Math.random() * 450);
+        return _this;
+    }
+    Enemy2.prototype.update = function () {
+        this.x -= this.speed;
+        this.element.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
+    };
+    Enemy2.prototype.reset = function () {
+        this.y = Math.random() * (window.innerHeight - 200);
+        this.x = (window.innerWidth + 77) + (Math.random() * 450);
+    };
+    return Enemy2;
+}(enemyObject));
 var Game = (function () {
     function Game() {
         this.currentscreen = new StartScreen(this);
@@ -184,67 +197,93 @@ var Game = (function () {
 }());
 window.addEventListener("load", function () { return new Game(); });
 var GameOver = (function () {
-    function GameOver() {
+    function GameOver(g) {
+        this.gamescreen = g;
         this.textfield = document.createElement("textfield");
         var foreground = document.getElementsByTagName("foreground")[0];
         foreground.appendChild(this.textfield);
     }
     GameOver.prototype.update = function () {
-        this.textfield.innerHTML = "GAME OVER, MAN!";
+        this.textfield.innerHTML = "GAME OVER, MAN!" + "<br> Player 1 score:" + this.gamescreen.score1 + "<br> Player 2 score:" + this.gamescreen.score2;
     };
     return GameOver;
 }());
 var GameScreen = (function () {
     function GameScreen(g) {
+        this.hitCoin = 0;
         this.game = g;
         this.character = new Character();
         this.character2 = new Character2();
-        this.coin = new Coin();
-        this.platforms = new Array();
-        var platformLocations = [
-            { x: 110, y: 220 },
-            { x: 1020, y: 220 },
-            { x: 110, y: 520 },
-            { x: 1020, y: 520 },
-            { x: 559, y: 370 },
-            { x: 1464, y: 370 },
-            { x: 559, y: 670 },
-            { x: 1464, y: 670 },
-            { x: 110, y: 820 },
-            { x: 1020, y: 820 },
-        ];
-        for (var _i = 0, platformLocations_1 = platformLocations; _i < platformLocations_1.length; _i++) {
-            var location_1 = platformLocations_1[_i];
-            this.platforms.push(new Platform(location_1.x, location_1.y));
-        }
+        this.enemies2 = [new Enemy2(), new Enemy2()];
+        this.enemies = [new Enemy(), new Enemy()];
+        this.coins = [new Coin(), new Coin(), new Coin()];
+        this.score1 = 0;
+        this.score2 = 0;
+        this.textfield = document.createElement("textfield");
+        var foreground = document.getElementsByTagName("foreground")[0];
+        foreground.appendChild(this.textfield);
         console.log('gamescreen');
     }
     GameScreen.prototype.update = function () {
         this.character.update();
         this.character2.update();
-        this.coin.update();
-        for (var _i = 0, _a = this.platforms; _i < _a.length; _i++) {
-            var p = _a[_i];
-            if (this.checkCollision(this.character.getRectangle(), p.getRectangle())) {
-                console.log("collission character 1");
-                this.character.fallSpeed = 0;
+        for (var _i = 0, _a = this.enemies; _i < _a.length; _i++) {
+            var e = _a[_i];
+            e.update();
+            if (this.checkCollision(this.character.getRectangle(), e.getRectangle())) {
+                e.reset();
+                console.log("player 1 lost a life!");
+                this.character.lives--;
             }
-            else {
-                this.character.fallSpeed = 10;
+            if (this.checkCollision(this.character2.getRectangle(), e.getRectangle())) {
+                e.reset();
+                console.log("player 2 lost a life!");
+                this.character2.lives--;
             }
-            if (this.checkCollision(this.character2.getRectangle(), p.getRectangle())) {
-                console.log("collission character 2");
-                this.character2.fallSpeed = 0;
+            if (e.getRectangle().right - e.getRectangle().width > window.innerWidth) {
+                e.reset();
             }
-            else {
-                this.character2.fallSpeed = 10;
+            for (var _b = 0, _c = this.enemies2; _b < _c.length; _b++) {
+                var e2 = _c[_b];
+                e2.update();
+                if (this.checkCollision(this.character.getRectangle(), e2.getRectangle())) {
+                    e2.reset();
+                    console.log("player 1 lost a life!");
+                    this.character.lives--;
+                }
+                if (this.checkCollision(this.character2.getRectangle(), e2.getRectangle())) {
+                    e2.reset();
+                    console.log("player 2 lost a life!");
+                    this.character2.lives--;
+                }
+                if (e2.getRectangle().left + e2.getRectangle().width < 0) {
+                    e2.reset();
+                }
+                if (this.character.lives == 0 || this.character2.lives == 0) {
+                    this.game.emptyScreen();
+                    this.game.showScreen(new GameOver(this));
+                }
+                for (var _d = 0, _e = this.coins; _d < _e.length; _d++) {
+                    var c = _e[_d];
+                    c.update();
+                    if (this.checkCollision(this.character.getRectangle(), c.getRectangle())) {
+                        c.reset();
+                        console.log("player 1 scored a point!");
+                        this.score1 += 10;
+                    }
+                    if (this.checkCollision(this.character2.getRectangle(), c.getRectangle())) {
+                        c.reset();
+                        console.log("player 2 scored a point!");
+                        this.score2 += 10;
+                    }
+                    if (c.getRectangle().bottom - c.getRectangle().height > window.innerHeight) {
+                        c.reset();
+                        this.hitCoin++;
+                        console.log(this.hitCoin);
+                    }
+                }
+                this.textfield.innerHTML = "Player 1 score:" + this.score1 + "<br> Player 1 levens:" + this.character.lives + "<br> Player 2 score:" + this.score2 + "<br> Player 2 levens:" + this.character2.lives;
             }
-            p.update();
-        }
-        if (this.checkCollision(this.character.getRectangle(), this.coin.getRectangle())) {
-            console.log("next screen");
-            this.game.emptyScreen();
-            this.game.showScreen(new GameOver());
         }
     };
     GameScreen.prototype.checkCollision = function (a, b) {
@@ -252,17 +291,6 @@ var GameScreen = (function () {
             b.left <= a.right &&
             a.top <= b.bottom &&
             b.top <= a.bottom);
-    };
-    GameScreen.prototype.collisionWithPlat = function () {
-        var falling = false;
-        for (var _i = 0, _a = this.platforms; _i < _a.length; _i++) {
-            var p = _a[_i];
-            if (this.checkCollision(this.character.getRectangle(), p.getRectangle())) {
-                falling = true;
-                break;
-            }
-        }
-        return falling;
     };
     return GameScreen;
 }());
@@ -292,11 +320,11 @@ var StartScreen = (function () {
         var wallLocations = [
             { x: 0 },
             { x: innerWidth / 2 - 50 },
-            { x: innerWidth - 105 }
+            { x: innerWidth - 100 }
         ];
         for (var _i = 0, wallLocations_1 = wallLocations; _i < wallLocations_1.length; _i++) {
-            var location_2 = wallLocations_1[_i];
-            this.walls.push(new Wall(location_2.x));
+            var location_1 = wallLocations_1[_i];
+            this.walls.push(new Wall(location_1.x));
         }
         var foreground = document.getElementsByTagName("foreground")[0];
         foreground.appendChild(this.textfield);
@@ -307,7 +335,7 @@ var StartScreen = (function () {
         console.log(a + b);
     };
     StartScreen.prototype.update = function () {
-        this.textfield.innerHTML = "START THE GAME";
+        this.textfield.innerHTML = "START THE GAME <br><br> Deze game is een game voor 2 spelers. Jullie zijn door het lot aan elkaar verbonden terwijl de geldstorm begint. Het is jullie doel om zoveel mogelijk muntjes uit de lucht te vangen en de vijanden te ontwijken. Jullie krijgen beide 5 levens maar zodra 1 van de 2 alle levens kwijt is is het game over!";
         for (var _i = 0, _a = this.walls; _i < _a.length; _i++) {
             var w = _a[_i];
             w.update();
