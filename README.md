@@ -382,7 +382,10 @@ class Enemy2 extends enemyObject
 # peer review game Jordy van Santen.
 https://jordy770.github.io/game-master/
 
-    Over het algemeen ziet de game er goed uit en op het eerste oog kon ik geen bugs vinden. Toen ik de game ging spelen was het al snel duidelijk wat de bedoeling was en ook toen kon ik geen bugs vinden. De game ziet er netjes uit en werkt goed. Alle verplichte punten zitten erin. Een goeie simpele game voor programmeren 4.
+    Over het algemeen ziet de game er goed uit en op het eerste oog kon ik geen bugs vinden. 
+    Toen ik de game ging spelen was het al snel duidelijk wat de bedoeling was en ook toen kon ik geen bugs vinden. 
+    De game ziet er netjes uit en werkt goed. 
+    Alle verplichte punten zitten erin. Een goeie simpele game voor programmeren 4.
 
 - [x] De code van het individuele project staat op GitHub.
 - [x] De game is online speelbaar.
