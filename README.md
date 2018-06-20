@@ -4,7 +4,10 @@ https://sven-koene.github.io/programmeren4/
 
 ## OOP principes
 ### Classes
-    Classes worden in mijn game best veel gebruikt en dit is logisch. Voor elke nieuwe onderdeel dat je maakt moet je een Class maken en in de constructor en de update van de class geef je dan alle onderdelen mee die die Class moet hebben.  De Classes die ik in mijn game heb zitten zijn bijvoorbeeld:
+    Classes worden in mijn game best veel gebruikt en dit is logisch. 
+    Voor elke nieuwe onderdeel dat je maakt moet je een Class maken en in de constructor en de update
+    van de class geef je dan alle onderdelen mee die die Class moet hebben.  
+    De Classes die ik in mijn game heb zitten zijn bijvoorbeeld:
 -	Character
 -	Coin
 -	Enemy
@@ -34,13 +37,16 @@ Hieronder een voorbeeld van de Class Gameover
 
 ### Encapsulation
 
-    Encapsulation is het gebruiken van de tags: private, public en protected. Door deze 3 tags te gebruiken bepaal je waar die variabele of functie kan worden gebruikt.  
+    Encapsulation is het gebruiken van de tags: private, public en protected. 
+    Door deze 3 tags te gebruiken bepaal je waar die variabele of functie kan worden gebruikt.  
     
     Bij het gebruik van private kan je het onderdeel alleen gebruiken in de class waar je hem aan maakt.
     
     Bij het gebruik van public kan je dat onderdeel van elk bestand in de bestandsmap aanroepen.
     
-    Bij het gebruik van protected kan je de onderdelen alleen wijzigen als die classes een child class zijn van de parent class. Protected wordt dan in de parent class gebruikt. Denk aan een Character object met 2 character childs.
+    Bij het gebruik van protected kan je de onderdelen alleen wijzigen als die classes 
+    een child class zijn van de parent class. Protected wordt dan in de parent class gebruikt. 
+    Denk aan een Character object met 2 character childs.
 
 ```    
     private element:HTMLElement
@@ -65,7 +71,9 @@ Hieronder een voorbeeld van de Class Gameover
     
     private element:HTMLElement
 
-    dit houd in dat alleen in deze class dit onderdeel kan worden gebruikt en aangepast. Door zoveel mogelijk gebruik te maken van private waar dat kan houd je je code veilig en kan je er iets zekerder van zijn dat er minder bugs zijn.
+    dit houd in dat alleen in deze class dit onderdeel kan worden gebruikt en aangepast. 
+    Door zoveel mogelijk gebruik te maken van private waar dat kan houd je je code veilig. 
+    Ook kan je er iets zekerder van zijn dat er minder bugs zijn.
 
 #### Public
 
@@ -74,7 +82,8 @@ Hieronder een voorbeeld van de Class Gameover
     public speed: number = 10
     public lives: number = 5
 
-    Deze zijn public omdat ik in de game de waardes van deze variabele wil kunnen veranderen als deze bijvoorbeeld private waren had ik deze niet vanuit een andere class kunnen bereiken en aanpassen.
+    Deze zijn public omdat ik in de game de waardes van deze variabele wil kunnen veranderen
+    als deze bijvoorbeeld private waren had ik deze niet vanuit een andere class kunnen bereiken en aanpassen.
 
 #### Protected
 
@@ -83,7 +92,9 @@ Hieronder een voorbeeld van de Class Gameover
     protected  x:number
     protected  y:number
 
-    Deze x en y variabele zijn hier protected om dat de 2 Child Classes, in dit geval 2 characters verschillende x en y waarde mee krijgen. door in de constructor van die child Classes 
+    Deze x en y variabele zijn hier protected omdat de 2 Child Classes, 
+    in dit geval 2 characters, verschillende x en y waarde mee krijgen.
+    door in de constructor van die child Classes 
     super()
     te zetten zijn dan de protected waardes dus aan te passen zodat de children beide andere waardes kunnen krijgen.
     Het gebruik van te veel public op te veel plaatsen kan ervoor zorgen dat je code onveilig is of bugs krijgt.
@@ -92,24 +103,31 @@ Hieronder een voorbeeld van de Class Gameover
 
 ### Composition
 
-    Composition is als het waren hoe alle classes met elkaar samen werken en hoe ze in elkaar verweven zijn om de game te laten werken. Bijvoorbeeld:
+    Composition is als het waren hoe alle classes met elkaar samen werken en hoe ze in elkaar verweven zijn om de game te laten werken.
+    Bijvoorbeeld:
     
     Mijn class Game staat als parent bovenaan het schema.
     In de game staan dan het StartScreen, GameScreen en de GameOver.
     
-    Elk van deze 3 classes heeft daar dan weer nieuwe classes in zitten. Zo creëer je een structuur van Classes die samen functioneren als een game.
+    Elk van deze 3 classes heeft daar dan weer nieuwe classes in zitten. 
+    Zo creëer je een structuur van Classes die samen functioneren als een game.
     
     In het klassendiagram is de structuur/composition te zien van mijn game.
 
 
 ### Inheritance
 
-    Inheritance gebruik je om dubbele code te voorkomen door meerdere classes aan 1 parent class te koppelen. In mijn code heb ik dit 2 keer toegepast. Ik weet zeker dat er een betere manier is om dit efficienter te gebruiken maar omdat ik nog niet bekend ben met het gebruik ervan heb ik het veilig gehouden en gebruikt voor de characters en de enemies. 
+    Inheritance gebruik je om dubbele code te voorkomen door meerdere classes aan 1 parent class te koppelen. 
+    In mijn code heb ik dit 2 keer toegepast. 
+    Ik weet zeker dat er een betere manier is om dit efficienter te gebruiken maar omdat ik nog niet bekend ben 
+    met het gebruik ervan heb ik het veilig gehouden en gebruikt voor de characters en de enemies. 
 
-    Ik heb in mijn game 2 characters zitten en beide characters zijn in de basis hetzelfde. Het enige verschil is de x en y locatie, de toetsen waarmee ze bestuurd worden en de ruimte waar ze in kunnen lopen.
+    Ik heb in mijn game 2 characters zitten en beide characters zijn in de basis hetzelfde. 
+    Het enige verschil is de x en y locatie, de toetsen waarmee ze bestuurd worden en de ruimte waar ze in kunnen lopen.
 
     In de code hieronder zie je als eerst het CharacterObject en daaronder de 2 codes van de Characters. 
-    Het CharacterObject en het EnemyObject zijn hier de parents. Hier zie je ook het gebruik van encapsulation doormiddel van public, private en protected tags voor variabele en functies.
+    Het CharacterObject en het EnemyObject zijn hier de parents. 
+    Hier zie je ook het gebruik van encapsulation doormiddel van public, private en protected tags voor methods en properties.
 #### CharacterObject
 ```
 class CharacterObject
