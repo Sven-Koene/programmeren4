@@ -377,6 +377,7 @@ class Enemy2 extends enemyObject
 }
 ```
 
+![plaatje van mijn klassendiagram](../master/docs/images/klassendiagram.png)
 
 # peer review game Jordy van Santen.
 https://jordy770.github.io/game-master/
