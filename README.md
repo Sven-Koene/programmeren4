@@ -2,6 +2,34 @@
 ## Link naar de game
 https://sven-koene.github.io/programmeren4/
 
+# Checklist programmeren4 game
+
+- [x] De code van het individuele project staat op GitHub.
+- [x] De game is online speelbaar.
+- [x] De game bevat minimaal één van de onderstaande extra uitdagingen.
+- [x] De game heeft een startscherm en een eindscherm.
+- [x] Er zijn geen bugs.
+- [x] Het project maakt gebruik van deze OOP principes.
+    - [x] Classes
+    - [x] Encapsulation
+    - [x] Composition
+    - [x] Inheritance
+- [x] De GitHub pagina bevat een ReadMe bestand. Dit bestand bevat:
+    - [x] Per bovengenoemd OOP principe een uitleg: waar is het toegepast, en waarom is het
+        op die plek toegepast. De uitleg is inclusief code voorbeelden.
+    - [x] Een klassendiagram van de game.
+    - [x] Een link naar de peer review die in week 6 is gedaan
+
+### Extra opdrachten 
+
+- [ ] De game ziet er zeer verzorgd uit dankzij goed uitgewerkt UI design en artwork.
+- [ ] De game bevat een hiscore lijst. Scores worden bewaard nadat de game is afgesloten.
+- [ ] De game werkt met Canvas in plaats van DOM elementen
+- [x] De game bevat local of online multiplayer.
+- [ ] De game werkt op mobiele schermen en ondersteunt touchscreen controls.
+- [ ] De game maakt gebruik van device api's zoals de camera, microfoon, gyroscoop of GPS.
+- [ ] De game gebruikt een externe library uit de lijst in deze modulewijzer.
+
 ## OOP principes
 ### Classes
     Classes worden in mijn game best veel gebruikt en dit is logisch. 
@@ -38,7 +66,7 @@ Hieronder een voorbeeld van de Class Gameover
 ### Encapsulation
 
     Encapsulation is het gebruiken van de tags: private, public en protected. 
-    Door deze 3 tags te gebruiken bepaal je waar die variabele of functie kan worden gebruikt.  
+    Door deze 3 tags te gebruiken bepaal je waar die methods en properties kan worden gebruikt.  
     
     Bij het gebruik van private kan je het onderdeel alleen gebruiken in de class waar je hem aan maakt.
     
@@ -103,7 +131,8 @@ Hieronder een voorbeeld van de Class Gameover
 
 ### Composition
 
-    Composition is als het waren hoe alle classes met elkaar samen werken en hoe ze in elkaar verweven zijn om de game te laten werken.
+    Composition is als het waren hoe alle classes met elkaar samen werken en hoe ze in elkaar verweven zijn om 
+    de game te laten werken.
     Bijvoorbeeld:
     
     Mijn class Game staat als parent bovenaan het schema.
@@ -123,11 +152,13 @@ Hieronder een voorbeeld van de Class Gameover
     met het gebruik ervan heb ik het veilig gehouden en gebruikt voor de characters en de enemies. 
 
     Ik heb in mijn game 2 characters zitten en beide characters zijn in de basis hetzelfde. 
-    Het enige verschil is de x en y locatie, de toetsen waarmee ze bestuurd worden en de ruimte waar ze in kunnen lopen.
+    Het enige verschil is de x en y locatie, de toetsen waarmee ze bestuurd worden en de ruimte waar ze in kunnen 
+    lopen.
 
     In de code hieronder zie je als eerst het CharacterObject en daaronder de 2 codes van de Characters. 
     Het CharacterObject en het EnemyObject zijn hier de parents. 
-    Hier zie je ook het gebruik van encapsulation doormiddel van public, private en protected tags voor methods en properties.
+    Hier zie je ook het gebruik van encapsulation doormiddel van public, private en protected tags voor 
+    methods en properties.
 #### CharacterObject
 ```
 class CharacterObject
@@ -345,36 +376,6 @@ class Enemy2 extends enemyObject
     }
 }
 ```
-
-
-# Checklist programmeren4 game
-
-- [x] De code van het individuele project staat op GitHub.
-- [x] De game is online speelbaar.
-- [x] De game bevat minimaal één van de onderstaande extra uitdagingen.
-- [x] De game heeft een startscherm en een eindscherm.
-- [x] Er zijn geen bugs.
-- [x] Het project maakt gebruik van deze OOP principes.
-    - [x] Classes
-    - [x] Encapsulation
-    - [x] Composition
-    - [x] Inheritance
-- [x] De GitHub pagina bevat een ReadMe bestand. Dit bestand bevat:
-    - [x] Per bovengenoemd OOP principe een uitleg: waar is het toegepast, en waarom is het
-        op die plek toegepast. De uitleg is inclusief code voorbeelden.
-    - [x] Een klassendiagram van de game.
-    - [x] Een link naar de peer review die in week 6 is gedaan
-
-### Extra opdrachten 
-
-- [ ] De game ziet er zeer verzorgd uit dankzij goed uitgewerkt UI design en artwork.
-- [ ] De game bevat een hiscore lijst. Scores worden bewaard nadat de game is afgesloten.
-- [ ] De game werkt met Canvas in plaats van DOM elementen
-- [x] De game bevat local of online multiplayer.
-- [ ] De game werkt op mobiele schermen en ondersteunt touchscreen controls.
-- [ ] De game maakt gebruik van device api's zoals de camera, microfoon, gyroscoop of GPS.
-- [ ] De game gebruikt een externe library uit de lijst in deze modulewijzer.
-
 
 
 # peer review game Jordy van Santen.
