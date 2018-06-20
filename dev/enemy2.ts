@@ -22,7 +22,7 @@ class Enemy2 extends enemyObject
     }
 
     public reset(){
-        this.y = Math.random() * (window.innerHeight - 200)
+        this.y = Math.random() * (window.innerHeight - 100)
         this.x = (window.innerWidth + 77) + (Math.random() * 450)
     }
 }
