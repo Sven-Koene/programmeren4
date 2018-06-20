@@ -153,7 +153,7 @@ var Enemy = (function (_super) {
         this.element.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
     Enemy.prototype.reset = function () {
-        this.y = Math.random() * (window.innerHeight - 200);
+        this.y = Math.random() * (window.innerHeight - 100);
         this.x = -77 - (Math.random() * 450);
     };
     return Enemy;
@@ -171,7 +171,7 @@ var Enemy2 = (function (_super) {
         this.element.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
     Enemy2.prototype.reset = function () {
-        this.y = Math.random() * (window.innerHeight - 200);
+        this.y = Math.random() * (window.innerHeight - 100);
         this.x = (window.innerWidth + 77) + (Math.random() * 450);
     };
     return Enemy2;
