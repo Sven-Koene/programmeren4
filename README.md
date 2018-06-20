@@ -376,6 +376,7 @@ class Enemy2 extends enemyObject
     }
 }
 ```
+## Klassendiagram
 
 ![plaatje van mijn klassendiagram](../master/docs/images/klassendiagram.png)
 
