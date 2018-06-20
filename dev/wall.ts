@@ -1,7 +1,7 @@
 class Wall
 {
-    protected x:number
-    protected y:number
+    private x:number
+    private y:number
     private element:HTMLElement
 
     constructor(x:number)
