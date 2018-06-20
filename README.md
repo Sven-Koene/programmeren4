@@ -381,7 +381,7 @@ class Enemy2 extends enemyObject
 ![plaatje van mijn klassendiagram](../master/docs/images/klassendiagram.png)
 
 # peer review game Jordy van Santen.
-https://jordy770.github.io/game-master/
+https://jordy770.github.io/game-master/  </br>
 https://github.com/jordy770/game-master
 
     Over het algemeen ziet de game er goed uit en op het eerste oog kon ik geen bugs vinden. 
